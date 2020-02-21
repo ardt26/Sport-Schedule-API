@@ -28,23 +28,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <ImageView
+                    android:tag="1111"
                     android:id="@+id/iv_badge_home"
-                    android:layout_width="100dp"
+                    android:layout_weight="4"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
-                    android:src="@android:mipmap/sym_def_app_icon"/>
+                    android:src="@drawable/ic_android_black_24dp"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_weight="3"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="VS"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="84sp"/>
                 <ImageView
                     android:id="@+id/iv_badge_away"
-                    android:layout_width="100dp"
+                    android:layout_weight="4"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
-                    android:src="@android:mipmap/sym_def_app_icon"/>
+                    android:tag="1111"
+                    android:src="@drawable/ic_android_black_24dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,22 +59,26 @@
                 android:layout_margin="5dp">
                 <TextView
                     android:id="@+id/tv_home_team"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="Home Team"
                     android:layout_marginLeft="5dp"
                     android:textSize="15sp"
                     android:gravity="center"/>
                 <TextView
                     android:id="@+id/tv_date"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12 Juni 2019"
                     android:layout_marginHorizontal="50dp"/>
                 <TextView
                     android:id="@+id/tv_away_team"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="Away Team"
                     android:textSize="15sp"
                     android:layout_marginLeft="3dp"

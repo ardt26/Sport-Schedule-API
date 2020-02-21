@@ -1,5 +1,6 @@
 package com.example.itcapi;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.itcapi.model.EventsItem;
 import com.example.itcapi.model.TeamsItem;
 import com.example.itcapi.service.SportService;
@@ -42,29 +44,38 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.tvHomeTeam.setText(item.getStrHomeTeam());
         holder.tvAwayTeam.setText(item.getStrAwayTeam());
 
-        new SportService().getTeam(item.getStrAwayTeam(), new TeamListener() {
-            @Override
-            public void onSuccess(List<TeamsItem> items) {
-                Picasso.get().load(items.get(0).getStrTeamBadge()).fit().into(holder.ivBadgeAway);
-            }
+        Log.d("AAAAA", "" + holder.ivBadgeAway.getDrawable());
+        if(Integer.parseInt(holder.ivBadgeAway.getTag().toString()) == 1111) {
+            new SportService().getTeam(item.getStrAwayTeam(), new TeamListener() {
+                @Override
+                public void onSuccess(List<TeamsItem> items) {
+                    holder.ivBadgeAway.setTag(R.drawable.ic_launcher_background);
+                    Glide.with(holder.itemView.getContext()).load(items.get(0).getStrTeamBadge()).into(holder.ivBadgeAway);
+                    //Picasso.get().load(items.get(0).getStrTeamBadge()).fit().into(holder.ivBadgeAway);
+                }
 
-            @Override
-            public void onFailed(String msg) {
-                Log.i("ISI ERROR", msg);
-            }
-        });
+                @Override
+                public void onFailed(String msg) {
+                    Log.i("ISI ERROR", msg);
+                }
+            });
+        }
 
-        new SportService().getTeam(item.getStrHomeTeam(), new TeamListener() {
-            @Override
-            public void onSuccess(List<TeamsItem> items) {
-                Picasso.get().load(items.get(0).getStrTeamBadge()).fit().into(holder.ivBadgeHome);
-            }
+        if(Integer.parseInt(holder.ivBadgeHome.getTag().toString()) == 1111) {
+            new SportService().getTeam(item.getStrHomeTeam(), new TeamListener() {
+                @Override
+                public void onSuccess(List<TeamsItem> items) {
+                    holder.ivBadgeHome.setTag(2222);
+                    Glide.with(holder.itemView.getContext()).load(items.get(0).getStrTeamBadge()).into(holder.ivBadgeHome);
+                    //Picasso.get().load(items.get(0).getStrTeamBadge()).fit().into(holder.ivBadgeHome);
+                }
 
-            @Override
-            public void onFailed(String msg) {
-                Log.i("ISI ERROR", msg);
-            }
-        });
+                @Override
+                public void onFailed(String msg) {
+                    Log.i("ISI ERROR", msg);
+                }
+            });
+        }
     }
 
     @Override
@@ -75,8 +86,10 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvEvent, tvDate, tvHomeTeam, tvAwayTeam;
         ImageView ivBadgeAway, ivBadgeHome;
+        View view;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            view = itemView;
             tvEvent = itemView.findViewById(R.id.tv_event);
             tvDate = itemView.findViewById(R.id.tv_date);
             tvHomeTeam = itemView.findViewById(R.id.tv_home_team);
