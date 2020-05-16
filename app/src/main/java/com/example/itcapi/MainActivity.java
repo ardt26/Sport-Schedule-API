@@ -14,13 +14,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JadwalListener{
 
-//    Listener<JadwalListener> listener = new Listener<JadwalListener>() {
-//        @Override
-//        public void onSuccess(List<JadwalListener> items) { }
-//        @Override
-//        public void onFailed(String msg) { }
-//    };  Cara manggil kalo Listenernya dijadiin 1
-
     RecyclerView rvRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
